@@ -62,6 +62,20 @@ Mul-Biotech-dMRV-dashboard/
 - **KPI Dictionary** - See `kpi_dictionary/` for detailed KPI definitions
 - **Satellite Layer** - See `kpi_dictionary/satellite_layer/` for satellite data specifications
 
+## 🔗 Ecosystem Repositories
+
+### Mul Biotech Farms Private Limited
+Corporate repository and digital headquarters.
+
+### Mul Biotech Farms Ecosystem
+Knowledge base, research, frameworks and methodologies.
+
+### Agri-GIS Dashboard
+Spatial intelligence and environmental analytics platform.
+
+### Aquaculture Dashboard
+Aquaculture monitoring and farm intelligence platform.
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please ensure:
