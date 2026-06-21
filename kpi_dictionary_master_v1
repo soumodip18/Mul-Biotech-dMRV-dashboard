@@ -1,0 +1,244 @@
+# Master KPI Framework
+
+## Overview
+
+The Mul Biotech dMRV Platform utilizes a structured Key Performance Indicator (KPI) framework to monitor environmental, agricultural, carbon, biodiversity, water, social, economic, and governance performance across projects.
+
+Current Framework Version: 1.0
+
+Total KPIs: 97
+
+KPI ID
+KPI Name
+Category
+Unit
+Description
+Data Source
+Frequency
+For GitHub, use this master KPI table format. This is complete enough for Version 1.0 of the Mul Biotech dMRV Platform.
+
+KPI Classification Summary
+
+Category	KPI Count
+
+Project	4
+Vegetation	8
+Agroforestry	10
+Carbon	10
+Soil	10
+Water	10
+Biodiversity	8
+Agriculture	8
+Aquaculture	8
+Social	7
+Economic	7
+Governance	7
+Total	97
+
+
+
+---
+
+PROJECT KPIs
+
+KPI ID	KPI Name	Unit	Description
+
+KPI-001	Total Project Area	Acre	Total area under project
+KPI-002	Active Project Sites	No.	Total active sites
+KPI-003	Area Under Monitoring	Acre	Area being monitored
+KPI-004	Monitoring Coverage	%	Coverage of monitoring activities
+
+
+
+---
+
+VEGETATION KPIs
+
+KPI ID	KPI Name	Unit	Description
+
+KPI-101	Average NDVI	Index	Vegetation vigor
+KPI-102	Average EVI	Index	Enhanced vegetation condition
+KPI-103	Vegetation Density	%	Ground vegetation coverage
+KPI-104	Vegetation Cover	%	Vegetation occupied area
+KPI-105	Biomass Growth Index	Score	Biomass increase indicator
+KPI-106	Canopy Coverage	%	Tree canopy coverage
+KPI-107	Green Cover Change	%	Change in green cover
+KPI-108	Vegetation Health Score	Score	Overall vegetation status
+
+
+
+---
+
+AGROFORESTRY KPIs
+
+KPI ID	KPI Name	Unit	Description
+
+KPI-201	Trees Planted	No.	Total trees planted
+KPI-202	Trees Survived	No.	Living trees
+KPI-203	Survival Rate	%	Tree survival percentage
+KPI-204	Average Tree Height	m	Average height
+KPI-205	Average DBH	cm	Diameter at breast height
+KPI-206	Plantation Density	Trees/Acre	Tree density
+KPI-207	Tree Growth Rate	%	Growth progression
+KPI-208	Species Diversity	No.	Number of species
+KPI-209	Agroforestry Area	Acre	Area under agroforestry
+KPI-210	Restoration Success Rate	%	Ecosystem restoration success
+
+
+
+---
+
+CARBON KPIs
+
+KPI ID	KPI Name	Unit	Description
+
+KPI-301	Total Carbon Stock	tCO₂e	Total stored carbon
+KPI-302	Annual Carbon Sequestration	tCO₂e/year	Annual carbon gain
+KPI-303	Carbon Density	tCO₂e/Acre	Carbon per acre
+KPI-304	Above Ground Carbon	tCO₂e	Biomass carbon
+KPI-305	Below Ground Carbon	tCO₂e	Root carbon
+KPI-306	Soil Carbon Stock	tCO₂e	Soil carbon
+KPI-307	Carbon Stock Change	tCO₂e	Net carbon change
+KPI-308	Avoided Emissions	tCO₂e	Prevented emissions
+KPI-309	Carbon Intensity	tCO₂e/Acre	Carbon concentration
+KPI-310	Net Climate Benefit	tCO₂e	Total climate impact
+
+
+
+---
+
+SOIL KPIs
+
+KPI ID	KPI Name	Unit	Description
+
+KPI-401	Soil Organic Carbon	%	Organic carbon content
+KPI-402	Soil Organic Matter	%	Organic matter content
+KPI-403	Soil Moisture	%	Water content
+KPI-404	Soil pH	pH	Soil acidity
+KPI-405	Soil Nitrogen	ppm	Nitrogen concentration
+KPI-406	Soil Phosphorus	ppm	Phosphorus concentration
+KPI-407	Soil Potassium	ppm	Potassium concentration
+KPI-408	Soil Health Score	Score	Composite health index
+KPI-409	Soil Erosion Risk	Score	Erosion assessment
+KPI-410	Soil Restoration Progress	%	Improvement status
+
+
+
+---
+
+WATER KPIs
+
+KPI ID	KPI Name	Unit	Description
+
+KPI-501	Water Availability	m³	Available water volume
+KPI-502	Water Storage Capacity	m³	Storage infrastructure
+KPI-503	Water Use Efficiency	%	Water productivity
+KPI-504	Water Retention Index	Score	Water retention ability
+KPI-505	Groundwater Status	Score	Groundwater condition
+KPI-506	Irrigation Efficiency	%	Irrigation performance
+KPI-507	Water Quality Score	Score	Water quality assessment
+KPI-508	Surface Water Area	Acre	Waterbody area
+KPI-509	NDWI Score	Index	Water index
+KPI-510	Water Stress Index	Score	Water stress assessment
+
+
+
+---
+
+BIODIVERSITY KPIs
+
+KPI ID	KPI Name	Unit	Description
+
+KPI-601	Species Count	No.	Species observed
+KPI-602	Tree Species Diversity	No.	Tree species richness
+KPI-603	Bird Species Count	No.	Bird diversity
+KPI-604	Pollinator Presence	Score	Pollinator activity
+KPI-605	Habitat Restoration Area	Acre	Restored habitat
+KPI-606	Biodiversity Index	Score	Biodiversity condition
+KPI-607	Native Species Ratio	%	Native species percentage
+KPI-608	Ecosystem Health Score	Score	Ecosystem condition
+
+
+
+---
+
+AGRICULTURE KPIs
+
+KPI ID	KPI Name	Unit	Description
+
+KPI-701	Crop Yield	Kg	Total yield
+KPI-702	Yield per Acre	Kg/Acre	Productivity
+KPI-703	Production Efficiency	%	Efficiency measure
+KPI-704	Crop Survival Rate	%	Crop survival
+KPI-705	Input Efficiency	%	Resource efficiency
+KPI-706	Organic Input Usage	%	Organic input adoption
+KPI-707	Farm Productivity Score	Score	Overall productivity
+KPI-708	Crop Health Score	Score	Crop condition
+
+
+
+---
+
+AQUACULTURE KPIs
+
+KPI ID	KPI Name	Unit	Description
+
+KPI-801	Fish Survival Rate	%	Survival performance
+KPI-802	Fish Biomass	Kg	Total fish biomass
+KPI-803	Feed Conversion Ratio	Ratio	Feed efficiency
+KPI-804	Dissolved Oxygen	mg/L	Water oxygen
+KPI-805	Water Temperature	°C	Water temperature
+KPI-806	Ammonia Level	ppm	Ammonia concentration
+KPI-807	Aquaculture Productivity	Kg/m³	Production density
+KPI-808	Water Quality Score	Score	Water quality
+
+
+
+---
+
+SOCIAL KPIs
+
+KPI ID	KPI Name	Unit	Description
+
+KPI-901	Farmers Engaged	No.	Farmers involved
+KPI-902	Beneficiaries Reached	No.	Total beneficiaries
+KPI-903	Training Programs Conducted	No.	Programs delivered
+KPI-904	Participants Trained	No.	Training participants
+KPI-905	Employment Generated	No.	Jobs created
+KPI-906	Volunteer Hours	Hours	Volunteer contribution
+KPI-907	Community Engagement Score	Score	Community participation
+
+
+
+---
+
+ECONOMIC KPIs
+
+KPI ID	KPI Name	Unit	Description
+
+KPI-1001	Revenue Generated	₹	Project revenue
+KPI-1002	Cost Savings	₹	Savings achieved
+KPI-1003	Project ROI	%	Return on investment
+KPI-1004	Net Profit	₹	Profitability
+KPI-1005	Income Improvement	%	Income enhancement
+KPI-1006	Carbon Revenue Potential	₹	Carbon income potential
+KPI-1007	Economic Impact Score	Score	Economic performance
+
+
+
+---
+
+GOVERNANCE KPIs
+
+KPI ID	KPI Name	Unit	Description
+
+KPI-1101	Monitoring Compliance	%	Monitoring adherence
+KPI-1102	Data Completeness	%	Data availability
+KPI-1103	Audit Readiness	%	Audit preparedness
+KPI-1104	Evidence Availability	%	Supporting evidence coverage
+KPI-1105	Reporting Timeliness	%	Reporting punctuality
+KPI-1106	Verification Status	Score	Verification progress
+KPI-1107	Documentation Coverage	%	Documentation completeness
+
+
+
