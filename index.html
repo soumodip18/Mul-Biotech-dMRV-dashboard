@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mul Biotech — dMRV Dashboard</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Leaflet CSS & JS for Geospatial Mapping -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <style>
+    #map { height: 320px; border-radius: 0.75rem; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col">
+
+  <!-- Navigation Bar -->
+  <header class="border-b border-slate-800 bg-slate-900/60 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-emerald-600 flex items-center justify-center font-bold text-white shadow-lg shadow-emerald-600/30">
+          MB
+        </div>
+        <div>
+          <h1 class="font-semibold text-white tracking-wide">Mul Biotech dMRV</h1>
+          <p class="text-xs text-emerald-400">IRBAS™ Active Telemetry Engine</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+          ● Live Verification Active
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Grid -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+
+    <!-- KPI Metric Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-sm">
+        <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Total Carbon Sequestration</p>
+        <p class="text-3xl font-bold text-emerald-400 mt-2">1,248.6 <span class="text-sm font-normal text-slate-300">tCO₂e</span></p>
+        <p class="text-xs text-emerald-500 mt-2">↑ +14.2% from last cycle</p>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-sm">
+        <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Biomass Estimation (Live)</p>
+        <p class="text-3xl font-bold text-cyan-400 mt-2">432.8 <span class="text-sm font-normal text-slate-300">MT</span></p>
+        <p class="text-xs text-cyan-400 mt-2">Pond Vol: 18,400 m³</p>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-sm">
+        <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Mean Soil Organic Carbon (SOC)</p>
+        <p class="text-3xl font-bold text-amber-400 mt-2">1.82 <span class="text-sm font-normal text-slate-300">%</span></p>
+        <p class="text-xs text-amber-500 mt-2">Baseline Target: 1.20%</p>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-sm">
+        <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">dMRV Audit Status</p>
+        <p class="text-2xl font-bold text-indigo-400 mt-2">Verified Tier-1</p>
+        <p class="text-xs text-slate-400 mt-2">NASA GIBS & Sentinel Synced</p>
+      </div>
+    </div>
+
+    <!-- Analytics & GIS Mapping Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      
+      <!-- Sequestration Trend Chart -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 flex flex-col justify-between">
+        <div>
+          <h2 class="font-semibold text-slate-100 mb-1">Carbon Sequestration Trajectory</h2>
+          <p class="text-xs text-slate-400 mb-4">Cumulative tCO₂e vs Verified Benchmark Baseline</p>
+        </div>
+        <div class="h-64">
+          <canvas id="sequestrationChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Geospatial Plot (Leaflet Map) -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 flex flex-col justify-between">
+        <div>
+          <h2 class="font-semibold text-slate-100 mb-1">Geospatial Plot & Microclimate Zone</h2>
+          <p class="text-xs text-slate-400 mb-4">Plot IRBAS-Zone 04 telemetry perimeter</p>
+        </div>
+        <div id="map"></div>
+      </div>
+
+    </div>
+
+    <!-- Verification Stream & Log Table -->
+    <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 overflow-x-auto">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="font-semibold text-slate-100">Telemetry & Verification Ledger</h2>
+          <p class="text-xs text-slate-400">Timestamped automated records for ESG & carbon credit verification</p>
+        </div>
+        <button onclick="alert('Exporting verified dMRV ledger in CSV format...')" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3 py-1.5 rounded-lg transition">
+          Export Log
+        </button>
+      </div>
+
+      <table class="w-full text-left text-sm text-slate-300">
+        <thead class="text-xs uppercase bg-slate-950/60 text-slate-400 border-b border-slate-800">
+          <tr>
+            <th class="py-3 px-4">Timestamp</th>
+            <th class="py-3 px-4">Plot / Zone</th>
+            <th class="py-3 px-4">Sensor / Telemetry Input</th>
+            <th class="py-3 px-4">Metric Value</th>
+            <th class="py-3 px-4">Status</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-800 font-mono text-xs">
+          <tr>
+            <td class="py-3 px-4 text-slate-400">2026-08-26 16:30</td>
+            <td class="py-3 px-4 text-slate-200 font-sans">Plot #04 (Aquaculture)</td>
+            <td class="py-3 px-4">Dissolved O₂ & Biomass Sensor</td>
+            <td class="py-3 px-4 text-cyan-400">6.8 mg/L | 42.1 kg/m³</td>
+            <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Verified</span></td>
+          </tr>
+          <tr>
+            <td class="py-3 px-4 text-slate-400">2026-08-26 15:45</td>
+            <td class="py-3 px-4 text-slate-200 font-sans">Plot #02 (Agroforestry)</td>
+            <td class="py-3 px-4">Canopy Height & NDVI Synthetic Radar</td>
+            <td class="py-3 px-4 text-emerald-400">NDVI: 0.78</td>
+            <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Verified</span></td>
+          </tr>
+          <tr>
+            <td class="py-3 px-4 text-slate-400">2026-08-26 14:10</td>
+            <td class="py-3 px-4 text-slate-200 font-sans">Plot #01 (Regenerative Topsoil)</td>
+            <td class="py-3 px-4">Subsurface SOC Probe Array</td>
+            <td class="py-3 px-4 text-amber-400">1.84% SOC @ 30cm</td>
+            <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Verified</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <!-- Scripts: Chart Initialization and Map Setup -->
+  <script>
+    // Initialize Chart.js Trend Chart
+    const ctx = document.getElementById('sequestrationChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+        datasets: [
+          {
+            label: 'Actual Sequestration (tCO₂e)',
+            data: [120, 260, 410, 590, 780, 940, 1100, 1248],
+            borderColor: '#34d399',
+            backgroundColor: 'rgba(52, 211, 153, 0.15)',
+            tension: 0.35,
+            fill: true
+          },
+          {
+            label: 'Projected Target Baseline',
+            data: [100, 220, 350, 500, 680, 830, 980, 1120],
+            borderColor: '#94a3b8',
+            borderDash: [5, 5],
+            fill: false,
+            tension: 0.1
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { labels: { color: '#94a3b8', boxWidth: 12 } }
+        },
+        scales: {
+          x: { ticks: { color: '#64748b' }, grid: { color: '#1e293b' } },
+          y: { ticks: { color: '#64748b' }, grid: { color: '#1e293b' } }
+        }
+      }
+    });
+
+    // Initialize Leaflet Geospatial Map
+    const map = L.map('map').setView([22.5726, 88.3639], 12); // Default center (Bengal Delta Region)
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; OpenStreetMap & CartoDB',
+      maxZoom: 19
+    }).addTo(map);
+
+    // Add Sample Project Boundary Marker
+    const marker = L.marker([22.5726, 88.3639]).addTo(map);
+    marker.bindPopup("<b>Mul Biotech IRBAS Site #1</b><br>Active Aquaculture & Carbon MRV Zone.").openPopup();
+  </script>
+</body>
+</html>
