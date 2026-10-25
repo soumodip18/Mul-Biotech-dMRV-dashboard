@@ -1,0 +1,11 @@
+{
+  "factor_id": "FAC-001",
+  "name": "Carbon to CO2 equivalent",
+  "version": "1.0",
+  "value": 3.666667,
+  "formula": "44 / 12",
+  "unit": "tCO2e per tC",
+  "source": "Ratio of molecular weights of CO2 (44) and carbon (12)",
+  "status": "PHYSICAL_CONSTANT",
+  "effective_date": "2026-10-22"
+}

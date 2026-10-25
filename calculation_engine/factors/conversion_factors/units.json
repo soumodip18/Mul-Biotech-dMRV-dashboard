@@ -1,0 +1,17 @@
+{
+  "factor_id": "FAC-006",
+  "name": "Unit conversion factors",
+  "version": "1.0",
+  "conversions": [
+    {"from": "ha", "to": "m2", "multiply_by": 10000},
+    {"from": "m2", "to": "ha", "multiply_by": 0.0001},
+    {"from": "kg", "to": "t", "multiply_by": 0.001},
+    {"from": "t", "to": "kg", "multiply_by": 1000},
+    {"from": "m", "to": "cm", "multiply_by": 100},
+    {"from": "cm", "to": "m", "multiply_by": 0.01},
+    {"from": "mm", "to": "cm", "multiply_by": 0.1},
+    {"from": "percent", "to": "fraction", "multiply_by": 0.01},
+    {"from": "fraction", "to": "percent", "multiply_by": 100}
+  ],
+  "effective_date": "2026-10-22"
+}

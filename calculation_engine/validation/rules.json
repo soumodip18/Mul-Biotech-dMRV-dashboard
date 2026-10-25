@@ -1,0 +1,29 @@
+{
+  "rules_version": "1.0",
+  "status": "DRAFT_PENDING_REVIEW",
+  "notes": "Sanity limits used by the validator. These are adjustable and must be reviewed by someone with domain knowledge.",
+  "inputs": {
+    "project_id":        {"type": "string"},
+    "plot_id":           {"type": "string"},
+    "sample_id":         {"type": "string"},
+    "species":           {"type": "string"},
+    "biomass_equation":  {"type": "string"},
+    "monitoring_date":   {"type": "date"},
+    "sampling_date":     {"type": "date"},
+    "trees_planted":     {"type": "integer", "min": 0, "min_inclusive": false},
+    "trees_surviving":   {"type": "integer", "min": 0},
+    "num_trees":         {"type": "integer", "min": 0, "min_inclusive": false},
+    "survival_rate":     {"type": "number", "min": 0, "max": 100},
+    "dbh":               {"type": "number", "min": 0, "min_inclusive": false, "max": 1000},
+    "height":            {"type": "number", "min": 0, "min_inclusive": false, "max": 150},
+    "wood_density":      {"type": "number", "min": 0.1, "max": 1.5},
+    "plot_area":         {"type": "number", "min": 0, "min_inclusive": false},
+    "carbon_fraction":   {"type": "number", "min": 0, "max": 1},
+    "root_shoot_ratio":  {"type": "number", "min": 0},
+    "soc_percent":       {"type": "number", "min": 0, "max": 100},
+    "bulk_density":      {"type": "number", "min": 0, "min_inclusive": false, "max": 3},
+    "soil_depth":        {"type": "number", "min": 0, "min_inclusive": false, "max": 300},
+    "area":              {"type": "number", "min": 0, "min_inclusive": false},
+    "gravel_fraction":   {"type": "number", "min": 0, "max": 1}
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "calculation_id": "CALC-000003",
+  "project_id": "MBF-DMRV-2026-001",
+  "methodology_id": "METH-001",
+  "methodology_version": "1.0",
+  "input_observation_ids": [
+    "OBS-201"
+  ],
+  "input_values": {
+    "observation_id": "OBS-201",
+    "project_type": "agroforestry",
+    "project_id": "MBF-DMRV-2026-001",
+    "plot_id": "PLOT-A",
+    "species": "EXAMPLE_SPECIES",
+    "num_trees": 100,
+    "survival_rate": 80,
+    "dbh": 20,
+    "height": 12,
+    "wood_density": 0.6,
+    "plot_area": 0.5,
+    "biomass_equation": "EQ-001",
+    "carbon_fraction": 0.47,
+    "evidence_reference": "field_sheet_plotA.pdf",
+    "applied_defaults": {
+      "root_shoot_ratio": 0.24
+    }
+  },
+  "formula": {
+    "surviving_trees": "num_trees * survival_rate / 100",
+    "agb_per_tree_kg": "defined by the selected biomass_equation (reference: 0.0673 * (wood_density * dbh^2 * height)^0.976)",
+    "above_ground_biomass_t": "agb_per_tree_kg * surviving_trees / 1000",
+    "below_ground_biomass_t": "above_ground_biomass_t * root_shoot_ratio",
+    "total_biomass_t": "above_ground_biomass_t + below_ground_biomass_t",
+    "carbon_stock_t_c": "total_biomass_t * carbon_fraction",
+    "co2e_t": "carbon_stock_t_c * 44 / 12",
+    "carbon_stock_t_c_per_ha": "carbon_stock_t_c / plot_area"
+  },
+  "factors_used": [
+    {
+      "name": "allometric_equations",
+      "file": "factors/biomass_factors/allometric_equations.json",
+      "factor_id": "FAC-004",
+      "version": "1.0",
+      "value": null,
+      "unit": null,
+      "applied": {
+        "equation_id": "EQ-001",
+        "name": "Chave et al. 2014 pantropical (DBH, height, wood density)",
+        "formula": "0.0673 * (wood_density * dbh^2 * height)^0.976",
+        "inputs": {
+          "wood_density": "g/cm3",
+          "dbh": "cm",
+          "height": "m"
+        },
+        "output": "above ground biomass per tree, kg dry matter",
+        "source": "Chave et al. 2014, Global Change Biology 20(10): 3177-3190",
+        "status": "DRAFT_PENDING_REVIEW",
+        "applicability": "Developed for tropical forest trees. Suitability for planted agroforestry species and local conditions must be confirmed by a reviewer."
+      }
+    },
+    {
+      "name": "root_shoot_ratios",
+      "file": "factors/biomass_factors/root_shoot_ratios.json",
+      "factor_id": "FAC-003",
+      "version": "1.0",
+      "value": null,
+      "unit": "ratio (below ground biomass / above ground biomass)",
+      "applied": {
+        "applies_to": "default_tropical_tree",
+        "value": 0.24,
+        "source": "Placeholder based on IPCC 2006 default range for tropical forests. Confirm the exact table value before use.",
+        "status": "DRAFT_PENDING_REVIEW",
+        "notes": "Must be confirmed for the project species and region."
+      }
+    },
+    {
+      "name": "carbon_to_co2e",
+      "file": "factors/emission_factors/co2_conversion.json",
+      "factor_id": "FAC-001",
+      "version": "1.0",
+      "value": 3.666667,
+      "unit": "tCO2e per tC"
+    }
+  ],
+  "result": {
+    "surviving_trees": 80.0,
+    "agb_per_tree_kg": 160.0966,
+    "above_ground_biomass_t": 12.8077,
+    "below_ground_biomass_t": 3.0739,
+    "total_biomass_t": 15.8816,
+    "carbon_stock_t_c": 7.4643,
+    "co2e_t": 27.3693,
+    "carbon_stock_t_c_per_ha": 14.9287
+  },
+  "unit": {
+    "above_ground_biomass_t": "t dry matter",
+    "below_ground_biomass_t": "t dry matter",
+    "total_biomass_t": "t dry matter",
+    "carbon_stock_t_c": "tC",
+    "co2e_t": "tCO2e",
+    "carbon_stock_t_c_per_ha": "tC/ha"
+  },
+  "uncertainty": {
+    "value": null,
+    "basis": "V1: a default percentage uncertainty is attached to the result based on the equation and factors used, and flagged as a simplified estimate. Measurement error in DBH and height is not propagated in V1."
+  },
+  "warnings": [
+    {
+      "code": "UNAPPROVED_FACTOR",
+      "field": "biomass_equation",
+      "message": "Equation EQ-001 is pending review."
+    },
+    {
+      "code": "DEFAULT_APPLIED",
+      "field": "root_shoot_ratio",
+      "message": "root_shoot_ratio not supplied, default 0.24 was used."
+    },
+    {
+      "code": "UNAPPROVED_FACTOR",
+      "field": "root_shoot_ratio",
+      "message": "The default root to shoot ratio is pending review."
+    },
+    {
+      "code": "NO_STATED_UNCERTAINTY",
+      "field": "uncertainty",
+      "message": "The methodology gives no default uncertainty value yet."
+    }
+  ],
+  "status": "QA_PENDING",
+  "calculated_at": "2026-10-22T20:27:22+00:00",
+  "engine_version": "v0.1.0"
+}

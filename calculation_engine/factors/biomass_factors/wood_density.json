@@ -1,0 +1,17 @@
+{
+  "factor_id": "FAC-005",
+  "name": "Wood density by species",
+  "version": "1.0",
+  "unit": "g/cm3",
+  "source_to_use": "Global Wood Density Database (or another approved reference)",
+  "values": [
+    {
+      "species": "EXAMPLE_SPECIES_REPLACE_ME",
+      "value": null,
+      "source": null,
+      "status": "TEMPLATE_NOT_FILLED"
+    }
+  ],
+  "notes": "Do not enter values from memory. Fill in each species with a value and its source reference.",
+  "effective_date": "2026-10-22"
+}

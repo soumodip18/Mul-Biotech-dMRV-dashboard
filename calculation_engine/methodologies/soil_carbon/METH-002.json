@@ -1,0 +1,54 @@
+{
+  "methodology_id": "METH-002",
+  "name": "Soil Organic Carbon",
+  "version": "1.0",
+  "status": "DRAFT_PENDING_REVIEW",
+  "applicable_project_types": ["agroforestry", "soil_carbon", "regenerative_agriculture"],
+  "required_inputs": [
+    {"name": "project_id", "type": "string", "unit": null},
+    {"name": "sample_id", "type": "string", "unit": null},
+    {"name": "soc_percent", "type": "float", "unit": "%"},
+    {"name": "bulk_density", "type": "float", "unit": "g/cm3"},
+    {"name": "soil_depth", "type": "float", "unit": "cm"},
+    {"name": "area", "type": "float", "unit": "ha"}
+  ],
+  "optional_inputs": [
+    {"name": "gravel_fraction", "type": "float", "unit": "fraction 0 to 1", "default": 0},
+    {"name": "sampling_date", "type": "date", "unit": "YYYY-MM-DD"},
+    {"name": "lab_method", "type": "string", "unit": null},
+    {"name": "evidence_reference", "type": "string", "unit": null}
+  ],
+  "formula": {
+    "soc_stock_t_c_per_ha": "soc_percent * bulk_density * soil_depth * (1 - gravel_fraction)",
+    "carbon_stock_total_t_c": "soc_stock_t_c_per_ha * area",
+    "co2e_total_t": "carbon_stock_total_t_c * 44 / 12"
+  },
+  "output_units": {
+    "soc_stock_t_c_per_ha": "tC/ha",
+    "carbon_stock_total_t_c": "tC",
+    "co2e_total_t": "tCO2e"
+  },
+  "factors_used": [
+    {"name": "carbon_to_co2e", "file": "factors/emission_factors/co2_conversion.json"}
+  ],
+  "data_sources": ["Laboratory SOC analysis", "Bulk density sampling"],
+  "assumptions": [
+    "SOC and bulk density were measured on the same sample and depth layer",
+    "The sampled layer represents the whole area stated",
+    "Gravel fraction defaults to 0 if not provided and this must be recorded in the calculation record"
+  ],
+  "uncertainty_rules": "V1: if laboratory uncertainty is supplied it is carried into the result. If not, the result is flagged as having no stated uncertainty.",
+  "applicability_conditions": [
+    "soc_percent must be greater than or equal to 0 and at most 100",
+    "bulk_density must be greater than 0",
+    "soil_depth must be greater than 0",
+    "area must be greater than 0",
+    "gravel_fraction must be between 0 and 1"
+  ],
+  "effective_date": "2026-10-22",
+  "limitations": [
+    "Single layer calculation only, multiple depth layers must be calculated separately and added",
+    "Does not apply equivalent soil mass correction",
+    "Shows a stock at one point in time, not a change over time"
+  ]
+}
