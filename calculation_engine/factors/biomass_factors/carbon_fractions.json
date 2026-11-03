@@ -1,0 +1,16 @@
+{
+  "factor_id": "FAC-002",
+  "name": "Carbon fraction of dry tree biomass",
+  "version": "1.0",
+  "unit": "fraction 0 to 1",
+  "values": [
+    {
+      "applies_to": "default_tree",
+      "value": 0.47,
+      "source": "IPCC 2006 Guidelines, Volume 4, Chapter 4 (default value)",
+      "status": "DRAFT_PENDING_REVIEW",
+      "notes": "Species or region specific values should replace this where available."
+    }
+  ],
+  "effective_date": "2026-10-22"
+}

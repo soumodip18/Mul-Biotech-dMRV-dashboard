@@ -1,0 +1,72 @@
+{
+  "methodology_id": "METH-001",
+  "name": "Agroforestry / Tree Biomass Carbon",
+  "version": "1.0",
+  "status": "DRAFT_PENDING_REVIEW",
+  "applicable_project_types": ["agroforestry", "tree_planting"],
+  "required_inputs": [
+    {"name": "project_id", "type": "string", "unit": null},
+    {"name": "plot_id", "type": "string", "unit": null},
+    {"name": "species", "type": "string", "unit": null},
+    {"name": "num_trees", "type": "integer", "unit": "count"},
+    {"name": "survival_rate", "type": "float", "unit": "%"},
+    {"name": "dbh", "type": "float", "unit": "cm"},
+    {"name": "height", "type": "float", "unit": "m"},
+    {"name": "wood_density", "type": "float", "unit": "g/cm3"},
+    {"name": "plot_area", "type": "float", "unit": "ha"},
+    {"name": "biomass_equation", "type": "string", "unit": "equation ID"},
+    {"name": "carbon_fraction", "type": "float", "unit": "fraction 0 to 1"}
+  ],
+  "optional_inputs": [
+    {"name": "root_shoot_ratio", "type": "float", "unit": "ratio", "default_source": "factors/biomass_factors/root_shoot_ratios.json"},
+    {"name": "monitoring_date", "type": "date", "unit": "YYYY-MM-DD"},
+    {"name": "evidence_reference", "type": "string", "unit": null}
+  ],
+  "formula": {
+    "surviving_trees": "num_trees * survival_rate / 100",
+    "agb_per_tree_kg": "defined by the selected biomass_equation (reference: 0.0673 * (wood_density * dbh^2 * height)^0.976)",
+    "above_ground_biomass_t": "agb_per_tree_kg * surviving_trees / 1000",
+    "below_ground_biomass_t": "above_ground_biomass_t * root_shoot_ratio",
+    "total_biomass_t": "above_ground_biomass_t + below_ground_biomass_t",
+    "carbon_stock_t_c": "total_biomass_t * carbon_fraction",
+    "co2e_t": "carbon_stock_t_c * 44 / 12",
+    "carbon_stock_t_c_per_ha": "carbon_stock_t_c / plot_area"
+  },
+  "output_units": {
+    "above_ground_biomass_t": "t dry matter",
+    "below_ground_biomass_t": "t dry matter",
+    "total_biomass_t": "t dry matter",
+    "carbon_stock_t_c": "tC",
+    "co2e_t": "tCO2e",
+    "carbon_stock_t_c_per_ha": "tC/ha"
+  },
+  "factors_used": [
+    {"name": "allometric_equations", "file": "factors/biomass_factors/allometric_equations.json"},
+    {"name": "root_shoot_ratios", "file": "factors/biomass_factors/root_shoot_ratios.json"},
+    {"name": "carbon_fraction", "file": "factors/biomass_factors/carbon_fractions.json"},
+    {"name": "carbon_to_co2e", "file": "factors/emission_factors/co2_conversion.json"}
+  ],
+  "data_sources": ["Field measurements of DBH and height", "Species wood density tables", "Published allometric equations"],
+  "assumptions": [
+    "DBH and height are plot or species averages for the surviving trees",
+    "The selected biomass equation is valid for the species and region",
+    "Wood density, root to shoot ratio and carbon fraction values are approved by a methodology reviewer"
+  ],
+  "uncertainty_rules": "V1: no default uncertainty value is attached until a reviewer supplies one. If default_uncertainty_percent is added to this file, it is attached to the result and flagged as a simplified estimate.",  "applicability_conditions": [
+    "num_trees must be greater than 0",
+    "survival_rate must be between 0 and 100",
+    "dbh must be greater than 0",
+    "height must be greater than 0",
+    "wood_density must be between 0.1 and 1.5 g/cm3",
+    "plot_area must be greater than 0",
+    "carbon_fraction must be between 0 and 1",
+    "Selected equation must be listed as applicable to the project's species and region"
+  ],
+  "effective_date": "2026-10-22",
+  "limitations": [
+    "Using average DBH and height understates biomass for plots with mixed tree sizes",
+    "Pantropical equations may not fit every species or local condition",
+    "Does not include soil, litter or deadwood carbon pools",
+    "Shows a stock at one point in time, not a change or a removal over time"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "factor_id": "FAC-004",
+  "name": "Allometric biomass equations",
+  "version": "1.0",
+  "equations": [
+    {
+      "equation_id": "EQ-001",
+      "name": "Chave et al. 2014 pantropical (DBH, height, wood density)",
+      "formula": "0.0673 * (wood_density * dbh^2 * height)^0.976",
+      "inputs": {"wood_density": "g/cm3", "dbh": "cm", "height": "m"},
+      "output": "above ground biomass per tree, kg dry matter",
+      "source": "Chave et al. 2014, Global Change Biology 20(10): 3177-3190",
+      "status": "DRAFT_PENDING_REVIEW",
+      "applicability": "Developed for tropical forest trees. Suitability for planted agroforestry species and local conditions must be confirmed by a reviewer."
+    }
+  ],
+  "effective_date": "2026-10-22"
+}

@@ -1,0 +1,46 @@
+{
+  "methodology_id": "METH-003",
+  "name": "Tree Survival and Biomass Monitoring",
+  "version": "1.0",
+  "status": "DRAFT_PENDING_REVIEW",
+  "applicable_project_types": ["agroforestry", "tree_planting"],
+  "required_inputs": [
+    {"name": "project_id", "type": "string", "unit": null},
+    {"name": "plot_id", "type": "string", "unit": null},
+    {"name": "monitoring_date", "type": "date", "unit": "YYYY-MM-DD"},
+    {"name": "trees_planted", "type": "integer", "unit": "count"},
+    {"name": "trees_surviving", "type": "integer", "unit": "count"}
+  ],
+  "optional_inputs": [
+    {"name": "species", "type": "string", "unit": null},
+    {"name": "evidence_reference", "type": "string", "unit": null},
+    {"name": "notes", "type": "string", "unit": null}
+  ],
+  "formula": {
+    "survival_rate_percent": "trees_surviving / trees_planted * 100",
+    "mortality_count": "trees_planted - trees_surviving",
+    "mortality_percent": "100 - survival_rate_percent"
+  },
+  "output_units": {
+    "survival_rate_percent": "%",
+    "mortality_count": "count",
+    "mortality_percent": "%"
+  },
+  "factors_used": [],
+  "data_sources": ["Field survey tree counts"],
+  "assumptions": [
+    "Tree counts come from a direct field count of the plot",
+    "Planted count is the original verified planting record"
+  ],
+  "uncertainty_rules": "V1: counts are treated as exact. If the survival figure comes from a sample rather than a full count, it must be flagged and the sampling method recorded.",
+  "applicability_conditions": [
+    "trees_planted must be greater than 0",
+    "trees_surviving must be between 0 and trees_planted",
+    "Both counts must be whole numbers"
+  ],
+  "effective_date": "2026-10-22",
+  "limitations": [
+    "Measures survival only, not tree size or biomass growth",
+    "Does not distinguish between causes of mortality"
+  ]
+}

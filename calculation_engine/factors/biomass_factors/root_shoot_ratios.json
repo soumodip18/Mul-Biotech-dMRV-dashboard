@@ -1,0 +1,16 @@
+{
+  "factor_id": "FAC-003",
+  "name": "Root to shoot ratio",
+  "version": "1.0",
+  "unit": "ratio (below ground biomass / above ground biomass)",
+  "values": [
+    {
+      "applies_to": "default_tropical_tree",
+      "value": 0.24,
+      "source": "Placeholder based on IPCC 2006 default range for tropical forests. Confirm the exact table value before use.",
+      "status": "DRAFT_PENDING_REVIEW",
+      "notes": "Must be confirmed for the project species and region."
+    }
+  ],
+  "effective_date": "2026-10-22"
+}

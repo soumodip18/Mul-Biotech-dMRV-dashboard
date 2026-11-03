@@ -1,0 +1,45 @@
+{
+  "calculation_id": "CALC-000001",
+  "project_id": "MBF-DMRV-2026-001",
+  "methodology_id": "METH-003",
+  "methodology_version": "1.0",
+  "input_observation_ids": [
+    "OBS-001"
+  ],
+  "input_values": {
+    "observation_id": "OBS-001",
+    "project_type": "agroforestry",
+    "project_id": "MBF-DMRV-2026-001",
+    "plot_id": "PLOT-A",
+    "monitoring_date": "2026-10-22",
+    "trees_planted": 100,
+    "trees_surviving": 87,
+    "evidence_reference": "photo_plotA_2026-10-22.jpg"
+  },
+  "formula": {
+    "survival_rate_percent": "trees_surviving / trees_planted * 100",
+    "mortality_count": "trees_planted - trees_surviving",
+    "mortality_percent": "100 - survival_rate_percent"
+  },
+  "factors_used": [],
+  "result": {
+    "trees_planted": 100,
+    "trees_surviving": 87,
+    "mortality_count": 13,
+    "survival_rate_percent": 87.0,
+    "mortality_percent": 13.0
+  },
+  "unit": {
+    "survival_rate_percent": "%",
+    "mortality_count": "count",
+    "mortality_percent": "%"
+  },
+  "uncertainty": {
+    "value": null,
+    "basis": "V1: counts are treated as exact. If the survival figure comes from a sample rather than a full count, it must be flagged and the sampling method recorded."
+  },
+  "warnings": [],
+  "status": "QA_PENDING",
+  "calculated_at": "2026-10-22T15:48:27+00:00",
+  "engine_version": "v0.1.0"
+}

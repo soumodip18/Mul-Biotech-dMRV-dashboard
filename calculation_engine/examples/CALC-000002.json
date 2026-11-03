@@ -1,0 +1,67 @@
+{
+  "calculation_id": "CALC-000002",
+  "project_id": "MBF-DMRV-2026-001",
+  "methodology_id": "METH-002",
+  "methodology_version": "1.0",
+  "input_observation_ids": [
+    "OBS-101"
+  ],
+  "input_values": {
+    "observation_id": "OBS-101",
+    "project_type": "soil_carbon",
+    "project_id": "MBF-DMRV-2026-001",
+    "sample_id": "SAMPLE-A1",
+    "soc_percent": 1.0,
+    "bulk_density": 1.3,
+    "soil_depth": 30,
+    "area": 2,
+    "evidence_reference": "lab_report_A1.pdf",
+    "applied_defaults": {
+      "gravel_fraction": 0
+    }
+  },
+  "formula": {
+    "soc_stock_t_c_per_ha": "soc_percent * bulk_density * soil_depth * (1 - gravel_fraction)",
+    "carbon_stock_total_t_c": "soc_stock_t_c_per_ha * area",
+    "co2e_total_t": "carbon_stock_total_t_c * 44 / 12"
+  },
+  "factors_used": [
+    {
+      "name": "carbon_to_co2e",
+      "file": "factors/emission_factors/co2_conversion.json",
+      "factor_id": "FAC-001",
+      "version": "1.0",
+      "value": 3.666667,
+      "unit": "tCO2e per tC"
+    }
+  ],
+  "result": {
+    "soc_stock_t_c_per_ha": 39.0,
+    "carbon_stock_total_t_c": 78.0,
+    "co2e_total_t": 286.0
+  },
+  "unit": {
+    "soc_stock_t_c_per_ha": "tC/ha",
+    "carbon_stock_total_t_c": "tC",
+    "co2e_total_t": "tCO2e"
+  },
+  "uncertainty": {
+    "value": null,
+    "basis": "V1: if laboratory uncertainty is supplied it is carried into the result. If not, the result is flagged as having no stated uncertainty."
+  },
+  "warnings": [
+    {
+      "code": "DEFAULT_APPLIED",
+      "field": "gravel_fraction",
+      "message": "gravel_fraction not supplied, 0 was used."
+    },
+    {
+      "code": "NO_STATED_UNCERTAINTY",
+      "field": "uncertainty",
+      "message": "No laboratory uncertainty was supplied, so none is stated."
+    }
+  ],
+  "status": "QA_PENDING",
+  "calculated_at": "2026-10-22T15:51:14+00:00",
+  "engine_version": "v0.1.0"
+}
