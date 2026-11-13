@@ -13,6 +13,7 @@ import copy
 from .. import ENGINE_VERSION
 from ..factor_loader import factor_reference, load_factor
 from ..records import RECORDS_DIR, create_and_save_record, used_observation_ids
+from ..uncertainty.uncertainty import build_uncertainty
 from ..validation.validator import load_methodology, validate_observation
 from .biomass_equations import EQUATIONS
 
@@ -104,14 +105,9 @@ def run(observation, records_dir=RECORDS_DIR):
         observation["num_trees"], observation["survival_rate"], agb_per_tree, root_shoot,
         observation["carbon_fraction"], observation["plot_area"], co2_file["value"])
 
-    # Uncertainty: only stated if the methodology file provides a value
-    pct = methodology.get("default_uncertainty_percent")
-    if pct is None:
-        uncertainty = {"value": None, "basis": methodology["uncertainty_rules"]}
-        warnings.append({"code": "NO_STATED_UNCERTAINTY", "field": "uncertainty",
-                         "message": "The methodology gives no default uncertainty value yet."})
-    else:
-        uncertainty = {"value": pct, "unit": "%", "basis": methodology["uncertainty_rules"]}
+    # Uncertainty: only stated if the methodology provides a value
+    uncertainty, uncertainty_warnings = build_uncertainty(methodology, result)
+    warnings.extend(uncertainty_warnings)
 
     record, path = create_and_save_record(
         project_id=observation["project_id"],

@@ -10,6 +10,7 @@ import copy
 from .. import ENGINE_VERSION
 from ..factor_loader import factor_reference, load_factor
 from ..records import RECORDS_DIR, create_and_save_record, used_observation_ids
+from ..uncertainty.uncertainty import build_uncertainty
 from ..validation.validator import load_methodology, validate_observation
 
 METHODOLOGY_ID = "METH-002"
@@ -58,11 +59,13 @@ def run(observation, records_dir=RECORDS_DIR):
         warnings.append({"code": "DEFAULT_APPLIED", "field": "gravel_fraction",
                          "message": "gravel_fraction not supplied, 0 was used."})
 
-    warnings.append({"code": "NO_STATED_UNCERTAINTY", "field": "uncertainty",
-                     "message": "No laboratory uncertainty was supplied, so none is stated."})
-
     result = calculate_soc(observation["soc_percent"], observation["bulk_density"],
                            observation["soil_depth"], observation["area"], gravel, co2e_factor)
+
+    # Uncertainty: a laboratory value if supplied, otherwise the methodology default, otherwise none
+    uncertainty, uncertainty_warnings = build_uncertainty(
+        methodology, result, observation.get("lab_uncertainty_percent"))
+    warnings.extend(uncertainty_warnings)
 
     record, path = create_and_save_record(
         project_id=observation["project_id"],
@@ -71,7 +74,7 @@ def run(observation, records_dir=RECORDS_DIR):
         input_values=input_values,
         result=result,
         unit=methodology["output_units"],
-        uncertainty={"value": None, "basis": methodology["uncertainty_rules"]},
+        uncertainty=uncertainty,
         factors_used=factors_used,
         warnings=warnings,
         records_dir=records_dir,
