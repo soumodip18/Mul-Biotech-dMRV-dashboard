@@ -1,0 +1,17 @@
+{
+  "observation_id": "SAMPLE-OBS-001",
+  "project_type": "agroforestry",
+  "project_id": "SAMPLE-PROJECT-001",
+  "plot_id": "SAMPLE-PLOT-A",
+  "species": "SAMPLE_SPECIES",
+  "num_trees": 100,
+  "survival_rate": 80,
+  "dbh": 20,
+  "height": 12,
+  "wood_density": 0.6,
+  "plot_area": 0.5,
+  "biomass_equation": "EQ-001",
+  "carbon_fraction": 0.47,
+  "evidence_reference": "sample_data_not_real.txt",
+  "notes": "SAMPLE DATA, NOT A REAL OBSERVATION"
+}

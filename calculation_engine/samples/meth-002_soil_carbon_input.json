@@ -1,0 +1,12 @@
+{
+  "observation_id": "SAMPLE-OBS-002",
+  "project_type": "soil_carbon",
+  "project_id": "SAMPLE-PROJECT-001",
+  "sample_id": "SAMPLE-SOIL-A1",
+  "soc_percent": 1.0,
+  "bulk_density": 1.3,
+  "soil_depth": 30,
+  "area": 2,
+  "evidence_reference": "sample_data_not_real.txt",
+  "notes": "SAMPLE DATA, NOT A REAL OBSERVATION"
+}

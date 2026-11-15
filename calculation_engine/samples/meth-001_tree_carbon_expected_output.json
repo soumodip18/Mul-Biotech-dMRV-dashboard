@@ -1,0 +1,29 @@
+{
+  "sample_label": "SAMPLE DATA, NOT REAL PROJECT DATA. Calculated result, not verified.",
+  "methodology_id": "METH-001",
+  "expected_status": "QA_PENDING",
+  "expected_result": {
+    "surviving_trees": 80.0,
+    "agb_per_tree_kg": 160.0966,
+    "above_ground_biomass_t": 12.8077,
+    "below_ground_biomass_t": 3.0739,
+    "total_biomass_t": 15.8816,
+    "carbon_stock_t_c": 7.4643,
+    "co2e_t": 27.3693,
+    "carbon_stock_t_c_per_ha": 14.9287
+  },
+  "expected_units": {
+    "above_ground_biomass_t": "t dry matter",
+    "below_ground_biomass_t": "t dry matter",
+    "total_biomass_t": "t dry matter",
+    "carbon_stock_t_c": "tC",
+    "co2e_t": "tCO2e",
+    "carbon_stock_t_c_per_ha": "tC/ha"
+  },
+  "expected_warning_codes": [
+    "UNAPPROVED_FACTOR",
+    "DEFAULT_APPLIED",
+    "UNAPPROVED_FACTOR",
+    "NO_STATED_UNCERTAINTY"
+  ]
+}

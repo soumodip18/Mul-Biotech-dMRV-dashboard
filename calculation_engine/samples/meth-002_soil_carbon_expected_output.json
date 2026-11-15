@@ -1,0 +1,19 @@
+{
+  "sample_label": "SAMPLE DATA, NOT REAL PROJECT DATA. Calculated result, not verified.",
+  "methodology_id": "METH-002",
+  "expected_status": "QA_PENDING",
+  "expected_result": {
+    "soc_stock_t_c_per_ha": 39.0,
+    "carbon_stock_total_t_c": 78.0,
+    "co2e_total_t": 286.0
+  },
+  "expected_units": {
+    "soc_stock_t_c_per_ha": "tC/ha",
+    "carbon_stock_total_t_c": "tC",
+    "co2e_total_t": "tCO2e"
+  },
+  "expected_warning_codes": [
+    "DEFAULT_APPLIED",
+    "NO_STATED_UNCERTAINTY"
+  ]
+}

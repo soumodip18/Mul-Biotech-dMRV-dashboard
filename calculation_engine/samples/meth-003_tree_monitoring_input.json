@@ -1,0 +1,12 @@
+{
+  "observation_id": "SAMPLE-OBS-003",
+  "project_type": "agroforestry",
+  "project_id": "SAMPLE-PROJECT-001",
+  "plot_id": "SAMPLE-PLOT-A",
+  "monitoring_date": "2026-10-22",
+  "trees_planted": 100,
+  "trees_surviving": 87,
+  "species": "SAMPLE_SPECIES",
+  "evidence_reference": "sample_data_not_real.txt",
+  "notes": "SAMPLE DATA, NOT A REAL OBSERVATION"
+}

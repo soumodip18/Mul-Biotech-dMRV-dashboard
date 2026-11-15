@@ -1,0 +1,18 @@
+{
+  "sample_label": "SAMPLE DATA, NOT REAL PROJECT DATA. Calculated result, not verified.",
+  "methodology_id": "METH-003",
+  "expected_status": "QA_PENDING",
+  "expected_result": {
+    "trees_planted": 100,
+    "trees_surviving": 87,
+    "mortality_count": 13,
+    "survival_rate_percent": 87.0,
+    "mortality_percent": 13.0
+  },
+  "expected_units": {
+    "survival_rate_percent": "%",
+    "mortality_count": "count",
+    "mortality_percent": "%"
+  },
+  "expected_warning_codes": []
+}
